@@ -25,15 +25,16 @@ function power(n,x){
 	console.log(x2);
 }
 
-function powerRecursif(n,x,tmp=0,x2){
-	x2=x;
+function powerRecursif(n,x,tmp=1,x2=x){
+	
 	if(tmp==n){
-		return x*x2;
+		let rep = x*x2;
+		console.log(rep);
 	}
 	else{
 		tmp++;
 		x2 = x2*x;
-		powerRecursif(n,x2,tmp)
+		powerRecursif(n,x,tmp,x2);
 	}
 }
 
@@ -45,4 +46,4 @@ console.log("Maximum entre 14 et 10 : "+max(10,14))
 console.log(min);
 bingo();
 power(3,2);
-console.log(powerRecursif(3,5));
+powerRecursif(3,5);
