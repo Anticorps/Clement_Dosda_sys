@@ -87,13 +87,56 @@ function pattern(t,pattern){
 		if(obj.includes(pattern)){
 			rep.push(obj.replace(pattern,pattern.toUpperCase()));
 		}
-		else{
-			rep.push(obj);
-		}
 	});
+	return rep;
+}
+
+function pattern2(t,testFnct,transFnct){
+	let rep = new Array();
+	t.forEach(obj =>{
+		if(testFnct(obj)){
+			rep.push(transFnct(obj));
+		}
+	})
+	return rep;
+}
+
+function pattern3(t,pattern){
+	let contient = elmt => elmt.includes(pattern);
+	let Upper = elmt => elmt.replace(pattern,pattern.toUpperCase());
+	let rep = t.filter(contient).map(Upper);
 	return rep;
 }
 
 
 let tabString = ["pot","potiron","poivre","potins","porc"];
 console.log(pattern(tabString,"pot"));
+console.log(pattern2(tabString,
+	(str)=> str.includes("pot"),
+    (str) => str.replace('pot','POT')));
+console.log(pattern3(tabString,"pot"));
+
+
+function createUrl(tabProduit){
+	let rep = new Array();
+	tabProduit.forEach(obj =>{
+			rep.push('http://www.cata.log/products/'+obj);
+		
+	})
+	return rep;
+}
+
+function createUrl2(tabProduit){
+	let rep ='<div class="cata"><ul>';
+	tabProduit.forEach(obj =>{
+			rep = rep+('<li> <a href="url"> http://www.cata.log/products/'+obj+'</a><li>');
+		
+	})
+	rep = rep+' </ul> </div>'
+	return rep;
+}
+
+let tabProduit = ["bannane","pomme","cerise","fraise"];
+
+console.log(createUrl(tabProduit));
+console.log(createUrl2(tabProduit));
