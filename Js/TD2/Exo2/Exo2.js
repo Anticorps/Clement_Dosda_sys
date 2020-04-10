@@ -55,10 +55,30 @@ let Etudiant = {
 			this.dateNaiss.getMonth()+'/'+
 			this.dateNaiss.getFullYear()
 		);
+	},
+
+	ajoutNote(m,n){
+		this.notes.push({
+			matiere : m,
+			note : n
+		})
+	},
+
+	moy(){
+		let i = 0;
+		let somme = 0;
+		for(i;i<this.notes.length;i++){
+			somme = somme + this.notes[i].note;
+		}
+		let moy = somme/this.notes.length;
+		return moy;
 	}
 
 }
 
+Etudiant.ajoutNote("C",15);
+Etudiant.ajoutNote("reseau",10);
+Etudiant.ajoutNote("com",5);
 console.log(
 	"ETUDIANT" +
 	"\nnumero : " + Etudiant.numero +
@@ -66,7 +86,7 @@ console.log(
 	"\nprenom : " + Etudiant.prenom +
 	"\ndateNaiss : " + Etudiant.dateNaiss +
 	"\nmail : " + Etudiant.mail +
-	"\nnotes : " + Etudiant.notes+
+	"\nmoyenne : " + Etudiant.moy() + 
 	"\nage :" +Etudiant.getAge()+
 	"\ninfo : "+Etudiant.getInfo()
 );
