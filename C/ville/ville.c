@@ -20,7 +20,6 @@ Liste recuperationFichier()
   Liste l = NULL;
   FILE *src;
   src=fopen("ville.txt", "r");
-
   if(src == NULL){
     printf("Erreur lors de l'ouverture du ficher");
     exit(1);
